@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Te amo cielo</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-image: url("amor.jpg");
+        background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
+        background-position: center; /* Centra la imagen de fondo */
+        background-repeat: no-repeat; /* Evita que la imagen se repita */
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: "Arial", sans-serif;
+      }
+
+      /* Estilo del título */
+      .title {
+        position: absolute;
+        top: 20px; /* Ajusta la posición vertical del título */
+        color: white; /* Color de la letra */
+        font-size: 3vw; /* Tamaño de fuente responsivo */
+        font-weight: bold;
+        text-align: center;
+        z-index: 1; /* Asegura que el título esté sobre el canvas */
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Sombra para mejorar la legibilidad */
+      }
+
+      /* Contenedor del poema, centrado y sin scroll */
+      .message-card {
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0.8
+        ); /* Fondo más opaco para mejorar la lectura */
+        padding: 40px; /* Espaciado mayor */
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        font-size: 2vw; /* Texto responsive */
+        color: #d81b60;
+        position: relative;
+        max-width: 80vw; /* Aumenta el ancho máximo */
+        max-height: 80vh; /* Aumenta la altura máxima */
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 1.5em;
+        font-weight: 500;
+        z-index: 1; /* Asegura que el texto esté sobre el canvas */
+        overflow: auto; /* Permite scroll si es necesario */
+        margin-top: 100px; /* Espacio adicional entre el título y el poema */
+      }
+
+      /* Estilos para la responsividad en pantallas más pequeñas */
+      @media (max-width: 600px) {
+        .message-card {
+          font-size: 5vw;
+          padding: 20px;
+        }
+        .title {
+          font-size: 10vw;
+          font-family: cursive; /* Tamaño del título en pantallas pequeñas */
+        }
+      }
+
+      /* El canvas detrás del texto */
+      canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="flowerCanvas"></canvas>
+
+    <!-- Título "Te amo" -->
+    <div class="title">Te amo mi amor</div>
+
+    <!-- Poema largo centrado y sin scroll -->
+    <div class="message-card">
+      <p>
+        A mil kilómetros, mi amor, te siento cerca, en cada amanecer, en cada
+        estrella que brilla, tu risa, un eco que mi alma recuerda, y en mi
+        pecho, tu esencia siempre destila. Amo cada detalle de ti, tu dulzura
+        infinita, los sueños que compartimos, la forma en que miras, cada
+        palabra que me envías, es mi vida, un susurro de amor que nunca se
+        retira. En las noches solitarias, te busco en la luna, imagino tus
+        abrazos, tu voz suave y clara, en el silencio profundo, tu amor es mi
+        fortuna, y en cada latido, mi corazón te ampara. Eres mi musa, mi razón
+        de ser, la luz que me guía en la oscuridad, aunque la distancia nos
+        quiera detener, mi amor por ti es un lazo de eternidad. Así que, amor
+        mío, aunque estés lejos, mi corazón siempre viaja, siempre va contigo, y
+        en cada instante que paso en tus reflejos, te amo más que nunca, eres mi
+        abrigo.
+      </p>
+    </div>
+
+    <script>
+      const canvas = document.getElementById("flowerCanvas");
+      const ctx = canvas.getContext("2d");
+
+      // Ajustar el canvas a toda la pantalla
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      // Llamamos a la función cuando se carga la página y cuando se redimensiona
+      window.addEventListener("load", resizeCanvas);
+      window.addEventListener("resize", resizeCanvas);
+
+      // Variables para la animación
+      let angle = 0;
+      let scale = 1;
+      let growing = true;
+
+      function drawFlower() {
+        const petals = 6;
+        const radius = canvas.width * 0.1; // Ajustar el tamaño de la flor
+        const petalLength = canvas.width * 0.15;
+        const petalWidth = canvas.width * 0.06;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Guardar el estado del contexto para transformaciones
+        ctx.save();
+        ctx.translate(canvas.width / 2, canvas.height / 2); // Flor centrada
+        ctx.rotate(angle);
+        ctx.scale(scale, scale);
+
+        // Dibujar cada pétalo
+        for (let i = 0; i < petals; i++) {
+          const theta = (i * Math.PI * 2) / petals;
+          ctx.beginPath();
+          ctx.ellipse(
+            Math.cos(theta) * radius,
+            Math.sin(theta) * radius,
+            petalLength,
+            petalWidth,
+            theta,
+            0,
+            Math.PI * 2
+          );
+          ctx.fillStyle = "#FFD700"; // Color amarillo
+          ctx.fill();
+        }
+
+        // Dibujar el centro de la flor
+        ctx.beginPath();
+        ctx.arc(0, 0, radius / 1.5, 0, Math.PI * 2);
+        ctx.fillStyle = "#FF6347"; // Centro naranja
+        ctx.fill();
+
+        ctx.restore();
+
+        // Actualizar la rotación y escala para la animación
+        angle += 0.02;
+        if (growing) {
+          scale += 0.005;
+          if (scale > 1.3) growing = false;
+        } else {
+          scale -= 0.005;
+          if (scale < 1) growing = true;
+        }
+
+        // Solicitar el siguiente frame para la animación
+        requestAnimationFrame(drawFlower);
+      }
+
+      // Inicializar la animación
+      drawFlower();
+    </script>
+  </body>
+</html>
