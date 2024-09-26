@@ -64,7 +64,7 @@
 
       .photo-gallery {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 10px;
         width: 100%;
       }
@@ -73,7 +73,7 @@
         width: 100%;
         border-radius: 10px;
         object-fit: cover;
-        height: 150px;
+        height: 200px; /* Aumentado para mejorar el tamaño de las imágenes */
       }
 
       .music-player {
@@ -109,11 +109,6 @@
       .menu-content label {
         display: block;
         margin: 5px 0;
-      }
-
-      .music-player input[type="range"] {
-        width: 100px;
-        margin-left: 10px;
       }
 
       canvas {
@@ -153,13 +148,6 @@
       <div class="photo-gallery">
         <img src="Imagen de WhatsApp 2024-09-12 a las 02.16.45_27c3dd72.jpg" alt="Foto 1 de mi novia" />
         <img src="Imagen de WhatsApp 2024-09-12 a las 02.16.45_995454c3.jpg" alt="Foto 2 de mi novia" />
-      </div>
-
-      <div class="music-player">
-        <audio id="audioPlayer" controls autoplay loop>
-          <source src="tu-cancion.mp3" type="audio/mp3" />
-          Tu navegador no soporta el elemento de audio.
-        </audio>
       </div>
 
       <div class="menu">
@@ -236,14 +224,17 @@
 
       drawFlower();
 
-      const audioPlayer = document.getElementById("audioPlayer");
+      const audioPlayer = new Audio("Quiero Saber - Andrey Serrano __ Letra. .mp3");
+      audioPlayer.loop = true;
+      audioPlayer.volume = 1;
+      audioPlayer.play();
+
       const volumeControl = document.getElementById("volumeControl");
 
       volumeControl.addEventListener("input", function () {
         audioPlayer.volume = volumeControl.value;
       });
 
-      // Control del menú hamburguesa
       const menuButton = document.querySelector('.menu-button');
       const menuContent = document.querySelector('.menu-content');
 
