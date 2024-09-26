@@ -6,70 +6,64 @@
     <title>Te amo cielo</title>
     <style>
       body {
-        margin: 0;
-        padding: 0;
-        background-image: url("amor.jpg");
-        background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
-        background-position: center; /* Centra la imagen de fondo */
-        background-repeat: no-repeat; /* Evita que la imagen se repita */
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        font-family: "Arial", sans-serif;
-      }
+  margin: 0;
+  padding: 0;
+  background-image: url("amor.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: "Arial", sans-serif;
+}
 
-      /* Estilo del título */
-      .title {
-        position: absolute;
-        top: 20px; /* Ajusta la posición vertical del título */
-        color: white; /* Color de la letra */
-        font-size: 3vw; /* Tamaño de fuente responsivo */
-        font-weight: bold;
-        text-align: center;
-        z-index: 1; /* Asegura que el título esté sobre el canvas */
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Sombra para mejorar la legibilidad */
-      }
+.title {
+  position: absolute;
+  top: 10px; /* Ajuste más espacio en la parte superior */
+  color: white;
+  font-size: 6vw; /* Tamaño responsivo mayor */
+  font-weight: bold;
+  text-align: center;
+  z-index: 1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  width: 100%; /* El título ocupa todo el ancho de la pantalla */
+  padding: 10px 20px; /* Añadir relleno para espacio en los bordes */
+}
 
-      /* Contenedor del poema, centrado y sin scroll */
-      .message-card {
-        background-color: rgba(
-          255,
-          255,
-          255,
-          0.8
-        ); /* Fondo más opaco para mejorar la lectura */
-        padding: 40px; /* Espaciado mayor */
-        border-radius: 15px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        font-size: 2vw; /* Texto responsive */
-        color: #d81b60;
-        position: relative;
-        max-width: 80vw; /* Aumenta el ancho máximo */
-        max-height: 80vh; /* Aumenta la altura máxima */
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        line-height: 1.5em;
-        font-weight: 500;
-        z-index: 1; /* Asegura que el texto esté sobre el canvas */
-        overflow: auto; /* Permite scroll si es necesario */
-        margin-top: 100px; /* Espacio adicional entre el título y el poema */
-      }
+.message-card {
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 4vw; /* Texto responsivo */
+  color: #d81b60;
+  position: relative;
+  max-width: 80vw; /* Ajustar el ancho para móviles */
+  max-height: 70vh; /* Controla la altura para evitar cortes */
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.5em;
+  font-weight: 500;
+  z-index: 1;
+  overflow-y: auto; /* Habilita scroll si es necesario en pantallas pequeñas */
+}
 
-      /* Estilos para la responsividad en pantallas más pequeñas */
-      @media (max-width: 600px) {
-        .message-card {
-          font-size: 5vw;
-          padding: 20px;
-        }
-        .title {
-          font-size: 10vw;
-          font-family: cursive; /* Tamaño del título en pantallas pequeñas */
-        }
-      }
+/* Estilos para pantallas pequeñas */
+@media (max-width: 600px) {
+  .message-card {
+    font-size: 5vw;
+    padding: 15px;
+  }
+  
+  .title {
+    font-size: 9vw; /* Aumentar tamaño del título para móviles */
+  }
+}
 
       /* El canvas detrás del texto */
       canvas {
