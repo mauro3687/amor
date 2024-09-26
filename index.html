@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Te amo cielo</title>
     <style>
-      body {
+    body {
   margin: 0;
   padding: 0;
   background-image: url("amor.jpg");
@@ -22,27 +22,27 @@
 
 .title {
   position: absolute;
-  top: 10px; /* Ajuste más espacio en la parte superior */
+  top: 5px; /* Ajuste más arriba el título */
   color: white;
-  font-size: 6vw; /* Tamaño responsivo mayor */
+  font-size: 6vw; /* Tamaño responsivo pero no tan grande */
   font-weight: bold;
   text-align: center;
   z-index: 1;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-  width: 100%; /* El título ocupa todo el ancho de la pantalla */
-  padding: 10px 20px; /* Añadir relleno para espacio en los bordes */
+  width: 100%;
+  padding: 5px 0; /* Menos padding para evitar que ocupe mucho espacio */
 }
 
 .message-card {
   background-color: rgba(255, 255, 255, 0.6);
-  padding: 20px;
+  padding: 15px;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-size: 4vw; /* Texto responsivo */
   color: #d81b60;
   position: relative;
-  max-width: 80vw; /* Ajustar el ancho para móviles */
-  max-height: 70vh; /* Controla la altura para evitar cortes */
+  max-width: 90vw; /* Ajusta el ancho para móviles */
+  max-height: 70vh; /* Controla la altura */
   text-align: center;
   display: flex;
   justify-content: center;
@@ -50,20 +50,22 @@
   line-height: 1.5em;
   font-weight: 500;
   z-index: 1;
-  overflow-y: auto; /* Habilita scroll si es necesario en pantallas pequeñas */
+  overflow-y: auto; /* Habilitar scroll solo si es necesario */
 }
 
-/* Estilos para pantallas pequeñas */
+/* Estilos para pantallas más pequeñas */
 @media (max-width: 600px) {
   .message-card {
     font-size: 5vw;
-    padding: 15px;
+    padding: 10px;
   }
   
   .title {
-    font-size: 9vw; /* Aumentar tamaño del título para móviles */
+    font-size: 8vw; /* Ajusta el tamaño del título para móviles */
+    top: 10px;
   }
 }
+
 
       /* El canvas detrás del texto */
       canvas {
