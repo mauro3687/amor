@@ -3,69 +3,88 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Te amo cielo</title>
+    <title>Flor, Poema y Galería</title>
     <style>
-    body {
-  margin: 0;
-  padding: 0;
-  background-image: url("amor.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  font-family: "Arial", sans-serif;
-}
+      body {
+        margin: 0;
+        padding: 0;
+        background-image: url("amor.jpg");
+        background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
+        background-position: center;
+        background-repeat: no-repeat;
+        overflow-x: hidden; /* Evita que la página haga scroll horizontal */
+        font-family: "Arial", sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        height: 100vh;
+      }
 
-.title {
-  position: absolute;
-  top: 5px; /* Ajuste más arriba el título */
-  color: white;
-  font-size: 6vw; /* Tamaño responsivo pero no tan grande */
-  font-weight: bold;
-  text-align: center;
-  z-index: 1;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-  width: 100%;
-  padding: 5px 0; /* Menos padding para evitar que ocupe mucho espacio */
-}
+      /* Estilo del título */
+      .title {
+        color: white;
+        font-size: 3vw;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 20px;
+        z-index: 1;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+      }
 
-.message-card {
-  background-color: rgba(255, 255, 255, 0.6);
-  padding: 15px;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-size: 4vw; /* Texto responsivo */
-  color: #d81b60;
-  position: relative;
-  max-width: 90vw; /* Ajusta el ancho para móviles */
-  max-height: 70vh; /* Controla la altura */
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  line-height: 1.5em;
-  font-weight: 500;
-  z-index: 1;
-  overflow-y: auto; /* Habilitar scroll solo si es necesario */
-}
+      /* Contenedor del poema */
+      .message-card {
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        font-size: 1.8vw;
+        color: #d81b60;
+        width: 80%;
+        max-width: 700px;
+        margin-top: 20px;
+        line-height: 1.5em;
+        font-weight: 500;
+        text-align: justify;
+      }
 
-/* Estilos para pantallas más pequeñas */
-@media (max-width: 600px) {
-  .message-card {
-    font-size: 5vw;
-    padding: 10px;
-  }
-  
-  .title {
-    font-size: 8vw; /* Ajusta el tamaño del título para móviles */
-    top: 10px;
-  }
-}
+      /* Galería de fotos */
+      .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 20px;
+      }
 
+      .gallery img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        margin: 10px;
+        border: 2px solid white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+      }
+
+      .gallery img:hover {
+        transform: scale(1.1);
+      }
+
+      /* Responsividad */
+      @media (max-width: 600px) {
+        .message-card {
+          font-size: 4vw;
+          padding: 20px;
+        }
+        .title {
+          font-size: 8vw;
+        }
+        .gallery img {
+          width: 80px;
+          height: 80px;
+        }
+      }
 
       /* El canvas detrás del texto */
       canvas {
@@ -95,10 +114,18 @@
         fortuna, y en cada latido, mi corazón te ampara. Eres mi musa, mi razón
         de ser, la luz que me guía en la oscuridad, aunque la distancia nos
         quiera detener, mi amor por ti es un lazo de eternidad. Así que, amor
-        mío, aunque estés lejos, mi corazón siempre viaja, siempre va contigo, y
-        en cada instante que paso en tus reflejos, te amo más que nunca, eres mi
-        abrigo.
+        mío, aunque estés lejos, mi corazón siempre viaja, siempre va contigo,
+        y en cada instante que paso en tus reflejos, te amo más que nunca, eres
+        mi abrigo.
       </p>
+    </div>
+
+    <!-- Galería de fotos -->
+    <div class="gallery">
+      <img src="foto1.jpg" alt="Foto 1" />
+      <img src="foto2.jpg" alt="Foto 2" />
+      <img src="foto3.jpg" alt="Foto 3" />
+      <img src="foto4.jpg" alt="Foto 4" />
     </div>
 
     <script>
