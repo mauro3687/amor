@@ -18,7 +18,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        height: 100vh;
+        min-height: 100vh;
       }
 
       /* Estilo del título */
@@ -46,6 +46,8 @@
         line-height: 1.5em;
         font-weight: 500;
         text-align: justify;
+        z-index: 1; /* Asegura que el poema esté sobre la flor */
+        position: relative;
       }
 
       /* Galería de fotos */
@@ -54,6 +56,7 @@
         flex-wrap: wrap;
         justify-content: center;
         margin-top: 20px;
+        z-index: 1; /* Asegura que las fotos estén sobre la flor */
       }
 
       .gallery img {
@@ -89,9 +92,10 @@
       /* El canvas detrás del texto */
       canvas {
         position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 0;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 0; /* El canvas está en el fondo */
       }
     </style>
   </head>
@@ -114,9 +118,9 @@
         fortuna, y en cada latido, mi corazón te ampara. Eres mi musa, mi razón
         de ser, la luz que me guía en la oscuridad, aunque la distancia nos
         quiera detener, mi amor por ti es un lazo de eternidad. Así que, amor
-        mío, aunque estés lejos, mi corazón siempre viaja, siempre va contigo,
-        y en cada instante que paso en tus reflejos, te amo más que nunca, eres
-        mi abrigo.
+        mío, aunque estés lejos, mi corazón siempre viaja, siempre va contigo, y
+        en cada instante que paso en tus reflejos, te amo más que nunca, eres mi
+        abrigo.
       </p>
     </div>
 
