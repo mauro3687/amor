@@ -160,8 +160,6 @@
         <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1" />
       </div>
     </div>
-
-    <button id="playButton">Reproducir música</button>
   </div>
 
   <script>
@@ -231,10 +229,9 @@
 
     const audioPlayer = new Audio("quiero_saber.mp3");
 
-    const playButton = document.getElementById("playButton");
-    playButton.addEventListener("click", function () {
+    document.body.addEventListener("click", function () {
       audioPlayer.play();
-    });
+    }, { once: true });  // La música se reproducirá solo tras el primer clic.
 
     const volumeControl = document.getElementById("volumeControl");
 
@@ -251,3 +248,4 @@
   </script>
 </body>
 </html>
+
