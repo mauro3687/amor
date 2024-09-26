@@ -219,26 +219,31 @@
 
       drawFlower();
 
+      // Crear el reproductor de audio pero no reproducirlo de inmediato
       const audioPlayer = new Audio("Quiero Saber - Andrey Serrano __ Letra. .mp3");
       audioPlayer.loop = true;
       audioPlayer.volume = 1;
-      audioPlayer.play();
 
       const volumeControl = document.getElementById("volumeControl");
-
-      volumeControl.addEventListener("input", function () {
-        audioPlayer.volume = volumeControl.value;
-      });
-
       const menuButton = document.querySelector('.menu-button');
       const menuContent = document.querySelector('.menu-content');
 
       menuButton.addEventListener('click', function () {
         menuContent.style.display = menuContent.style.display === 'block' ? 'none' : 'block';
+        // Reproducir música al abrir el menú
+        if (menuContent.style.display === 'block') {
+          audioPlayer.play().catch(error => {
+            console.error("Error al intentar reproducir la música:", error);
+          });
+        }
       });
 
-      // Cerrar el menú si se hace clic fuera de él
-      window.addEventListener('click', function(event) {
+      volumeControl.addEventListener("input", function () {
+        audioPlayer.volume = volumeControl.value;
+      });
+      
+      // Cerrar menú si se hace clic fuera de él
+      document.addEventListener('click', function(event) {
         if (!menuButton.contains(event.target) && !menuContent.contains(event.target)) {
           menuContent.style.display = 'none';
         }
@@ -246,4 +251,3 @@
     </script>
   </body>
 </html>
-
