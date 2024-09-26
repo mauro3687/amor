@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+  <link rel="shortcut icon" href="icon.ico" type="image/x-icon">
   <title>Flor, Poema y Música Elegante</title>
   <style>
     body {
@@ -227,14 +228,10 @@
 
     drawFlower();
 
-    // Cargar y reproducir el audio
-    const audioPlayer = new Audio("quiero_saber.mp3");  // Usa un nombre de archivo más simple
+    const audioPlayer = new Audio("Quiero Saber - Andrey Serrano __ Letra. .mp3");
     audioPlayer.loop = true;
     audioPlayer.volume = 1;
-
-    audioPlayer.addEventListener('canplaythrough', function() {
-      audioPlayer.play();
-    });
+    audioPlayer.play();
 
     const volumeControl = document.getElementById("volumeControl");
 
