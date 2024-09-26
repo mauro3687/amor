@@ -73,12 +73,7 @@
         width: 100%;
         border-radius: 10px;
         object-fit: cover;
-        height: 200px; /* Aumentado para mejorar el tamaño de las imágenes */
-      }
-
-      .music-player {
-        margin-top: 20px;
-        text-align: center;
+        height: 200px; /* Ajusta la altura según sea necesario */
       }
 
       .menu {
@@ -241,6 +236,14 @@
       menuButton.addEventListener('click', function () {
         menuContent.style.display = menuContent.style.display === 'block' ? 'none' : 'block';
       });
+
+      // Cerrar el menú si se hace clic fuera de él
+      window.addEventListener('click', function(event) {
+        if (!menuButton.contains(event.target) && !menuContent.contains(event.target)) {
+          menuContent.style.display = 'none';
+        }
+      });
     </script>
   </body>
 </html>
+
