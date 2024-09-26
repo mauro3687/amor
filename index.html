@@ -227,10 +227,14 @@
 
     drawFlower();
 
-    const audioPlayer = new Audio("Quiero Saber - Andrey Serrano __ Letra. .mp3");
+    // Cargar y reproducir el audio
+    const audioPlayer = new Audio("quiero_saber.mp3");  // Usa un nombre de archivo más simple
     audioPlayer.loop = true;
     audioPlayer.volume = 1;
-    audioPlayer.play();
+
+    audioPlayer.addEventListener('canplaythrough', function() {
+      audioPlayer.play();
+    });
 
     const volumeControl = document.getElementById("volumeControl");
 
