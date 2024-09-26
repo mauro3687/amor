@@ -3,135 +3,125 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flor, Poema y Galería</title>
+    <title>Flor y Poema Elegante</title>
     <style>
       body {
         margin: 0;
         padding: 0;
+        background-image: url("amor.jpg");
+        background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
+        background-position: center; /* Centra la imagen de fondo */
+        background-repeat: no-repeat; /* Evita que la imagen se repita */
+        overflow: hidden;
         display: flex;
-        flex-direction: column;
+        justify-content: center;
         align-items: center;
-        justify-content: flex-start;
+        flex-direction: column; /* Coloca el contenido en columna */
         min-height: 100vh;
-        background-image: url('amor.jpg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
         font-family: "Arial", sans-serif;
       }
 
-      /* Canvas de la flor animada */
-      .canvas-background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 0; /* La flor estará sobre la imagen de fondo pero detrás del texto */
-        pointer-events: none; /* Evitar que el canvas interfiera con interacciones */
+      /* Contenedor para el poema y las fotos */
+      .container {
+        z-index: 1; /* Asegura que todo esté sobre el canvas */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 90%;
       }
 
       /* Estilo del título */
       .title {
         color: white;
-        font-size: 4vw;
+        font-size: 3vw;
         font-weight: bold;
-        text-align: center;
-        margin-top: 20px;
-        z-index: 1;
-        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Sombra para mejorar la legibilidad */
       }
 
       /* Contenedor del poema */
       .message-card {
-        background-color: rgba(255, 255, 255, 0.8);
+        background-color: rgba(255, 255, 255, 0.7);
         padding: 20px;
         border-radius: 15px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        font-size: 1.8vw;
-        color: #d81b60;
-        width: 80%;
-        max-width: 700px;
-        margin-top: 20px;
-        line-height: 1.5em;
-        font-weight: 500;
-        text-align: justify;
-        z-index: 1; /* Asegura que el poema esté sobre la flor */
-        position: relative;
-      }
-
-      /* Galería de fotos */
-      .gallery {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-top: 20px;
-        z-index: 1; /* Asegura que las fotos estén sobre la flor */
-      }
-
-      .gallery img {
-        width: 100px;
-        height: 100px;
-        object-fit: cover;
-        margin: 10px;
-        border: 2px solid white;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
-        transition: transform 0.3s ease;
+        font-size: 2vw; /* Texto responsive */
+        color: #d81b60;
+        max-width: 80vw;
+        max-height: 60vh;
+        overflow-y: auto;
+        line-height: 1.5em;
+        margin-bottom: 20px;
       }
 
-      .gallery img:hover {
-        transform: scale(1.1);
-      }
-
-      /* Responsividad */
+      /* Estilos para la responsividad en pantallas más pequeñas */
       @media (max-width: 600px) {
         .message-card {
-          font-size: 4vw;
-          padding: 20px;
+          font-size: 5vw;
         }
         .title {
-          font-size: 8vw;
+          font-size: 6vw;
         }
-        .gallery img {
-          width: 80px;
-          height: 80px;
-        }
+      }
+
+      /* Estilo de las fotos */
+      .photo-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+        width: 100%;
+      }
+
+      .photo-gallery img {
+        width: 100%;
+        border-radius: 10px;
+        object-fit: cover;
+        height: 150px;
+      }
+
+      /* El canvas detrás del contenido */
+      canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
       }
     </style>
   </head>
   <body>
-    <!-- Canvas de la flor animada -->
-    <canvas id="flowerCanvas" class="canvas-background"></canvas>
+    <canvas id="flowerCanvas"></canvas>
 
-    <!-- Título "Te amo" -->
-    <div class="title">Te amo mi amor</div>
+    <!-- Contenedor para el poema y las fotos -->
+    <div class="container">
+      <div class="title">Te amo mi amor</div>
 
-    <!-- Poema largo centrado y sin scroll -->
-    <div class="message-card">
-      <p>
-        A mil kilómetros, mi amor, te siento cerca, en cada amanecer, en cada
-        estrella que brilla, tu risa, un eco que mi alma recuerda, y en mi
-        pecho, tu esencia siempre destila. Amo cada detalle de ti, tu dulzura
-        infinita, los sueños que compartimos, la forma en que miras, cada
-        palabra que me envías, es mi vida, un susurro de amor que nunca se
-        retira. En las noches solitarias, te busco en la luna, imagino tus
-        abrazos, tu voz suave y clara, en el silencio profundo, tu amor es mi
-        fortuna, y en cada latido, mi corazón te ampara. Eres mi musa, mi razón
-        de ser, la luz que me guía en la oscuridad, aunque la distancia nos
-        quiera detener, mi amor por ti es un lazo de eternidad. Así que, amor
-        mío, aunque estés lejos, mi corazón siempre viaja, siempre va contigo, y
-        en cada instante que paso en tus reflejos, te amo más que nunca, eres mi
-        abrigo.
-      </p>
-    </div>
+      <!-- Poema largo -->
+      <div class="message-card">
+        <p id="poema">
+          A mil kilómetros, mi amor, te siento cerca, en cada amanecer, en cada
+          estrella que brilla, tu risa, un eco que mi alma recuerda, y en mi
+          pecho, tu esencia siempre destila. Amo cada detalle de ti, tu dulzura
+          infinita, los sueños que compartimos, la forma en que miras, cada
+          palabra que me envías, es mi vida, un susurro de amor que nunca se
+          retira. En las noches solitarias, te busco en la luna, imagino tus
+          abrazos, tu voz suave y clara, en el silencio profundo, tu amor es mi
+          fortuna, y en cada latido, mi corazón te ampara. Eres mi musa, mi
+          razón de ser, la luz que me guía en la oscuridad, aunque la distancia
+          nos quiera detener, mi amor por ti es un lazo de eternidad. Así que,
+          amor mío, aunque estés lejos, mi corazón siempre viaja, siempre va
+          contigo, y en cada instante que paso en tus reflejos, te amo más que
+          nunca, eres mi abrigo.
+        </p>
+      </div>
 
-    <!-- Galería de fotos -->
-    <div class="gallery">
-      <img src="foto1.jpg" alt="Foto 1" />
-      <img src="foto2.jpg" alt="Foto 2" />
-      <img src="foto3.jpg" alt="Foto 3" />
-      <img src="foto4.jpg" alt="Foto 4" />
+      <!-- Galería de fotos -->
+      <div class="photo-gallery">
+        <img src="foto1.jpg" alt="Foto 1 de mi novia" />
+        <img src="foto2.jpg" alt="Foto 2 de mi novia" />
+        <img src="foto3.jpg" alt="Foto 3 de mi novia" />
+      </div>
     </div>
 
     <script>
@@ -144,11 +134,10 @@
         canvas.height = window.innerHeight;
       }
 
-      // Llamamos a la función cuando se carga la página y cuando se redimensiona
       window.addEventListener("load", resizeCanvas);
       window.addEventListener("resize", resizeCanvas);
 
-      // Variables para la animación
+      // Variables para la animación de la flor
       let angle = 0;
       let scale = 1;
       let growing = true;
@@ -202,11 +191,9 @@
           if (scale < 1) growing = true;
         }
 
-        // Solicitar el siguiente frame para la animación
         requestAnimationFrame(drawFlower);
       }
 
-      // Inicializar la animación
       drawFlower();
     </script>
   </body>
